@@ -60,8 +60,8 @@ const Login = () => {
 const SignupLoginPage = () => {
   const [loginState, setLoginState] = useState(false);
   const stateText = loginState
-    ? "Sign up now "
-    : "Already signed in ? Login then ";
+    ? "Already signed in ? Login then  "
+    : "Sign up now ";
 
   const stateToggle = () => {
     setLoginState(!loginState);

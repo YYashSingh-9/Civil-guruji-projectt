@@ -1,6 +1,7 @@
 Dividing this project into parts (cases)
 
-Part 1 :- user creates account , view all courses , has an option to click order course with buy btn.
+Part 1 :- user creates account , view all courses , has an option to click order course with
+buy btn. ✔
 Part 2 :- user data saved in local storage and backend
 part 3 :- user logs in -> data is fetched from local storage and checks the duration of
 previous login to the current login , if it is more than few seconds(5 day as per project)
@@ -12,7 +13,7 @@ that course is in the list of people who bought courses ..if not then notificati
 
 front end part
 1. Create home page where course cards will be shown. ✔
-2. Create a dedicated whole page of a course. 
+2. Create a dedicated whole page of a course. ✔
 3. Create a sign in page. ✔
 4. Create a login page. ✔
 5. Create course cards. ✔
