@@ -19,7 +19,7 @@ front end part
 5. Create course cards. ✔
 
 backend part
-1. Create user modal
+1. Create user modal ✔
 2. Create login signup functionality
 3. Create database modal for people who clicked courses (course id & user id )
 4. Create courses modal 
