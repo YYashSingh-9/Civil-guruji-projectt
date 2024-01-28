@@ -1,0 +1,25 @@
+Dividing this project into parts (cases)
+
+Part 1 :- user creates account , view all courses , has an option to click order course with buy btn.
+Part 2 :- user data saved in local storage and backend
+part 3 :- user logs in -> data is fetched from local storage and checks the duration of
+previous login to the current login , if it is more than few seconds(5 day as per project)
+then send email to the user and pop a notification about this.
+part 4 :- when a user clicks a course we take that user's information and send it to the backend
+if user does not buy that course and return to homepage function will run and see if the user who clicked
+that course is in the list of people who bought courses ..if not then notification will pop and email will be sent
+
+
+front end part
+1. Create home page where course cards will be shown.
+2. Create a dedicated whole page of a course.
+3. Create a sign in page.
+4. create a login page.
+5. Create course cards.
+
+backend part
+1. Create user modal
+2. Create login signup functionality
+3. Create database modal for people who clicked courses (course id & user id )
+4. Create courses modal 
+5. Create bought course modal 
