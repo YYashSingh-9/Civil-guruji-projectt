@@ -22,5 +22,5 @@ backend part
 1. Create user model ✔
 2. Create login signup functionality ✔
 3. Create database model for people who clicked courses (course id & user id )
-4. Create courses model 
-5. Create bought course model 
+4. Create courses model ✔ 
+5. Create bought course model ✔
