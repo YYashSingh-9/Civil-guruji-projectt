@@ -1,8 +1,12 @@
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import Typography from "@mui/material/Typography";
-import { Box, Container, TextField, Button } from "@mui/material";
+import { Box, Container, Button } from "@mui/material";
 import classes from "./SignupLoginPage.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Form, useNavigate } from "react-router-dom";
+import { useActionData } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { actions } from "../../Store/StoreSlice";
+
 // Helper functions
 const Signup = () => {
   return (
@@ -11,21 +15,39 @@ const Signup = () => {
         <Typography variant="h3" gutterBottom>
           Signup
         </Typography>
-        <Box
-          component="form"
-          sx={{
-            "& > :not(style)": { m: 1, width: "25ch" },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <TextField id="outlined-basic" label="Name" variant="outlined" />
-          <TextField id="outlined-basic" label="Password" variant="outlined" />
-          <TextField id="outlined-basic" label="Email" variant="outlined" />
-        </Box>
-        <Button variant="contained" sx={{ mt: 5 }}>
-          Signup
-        </Button>
+        <Form method="POST">
+          <label htmlFor="name">User Name</label>
+          <br />
+          <input
+            type="name"
+            id="name"
+            name="name"
+            placeholder="ex-Yashwardhanm Singh"
+          />
+          <br />
+          <label htmlFor="email">User Email</label>
+          <br />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="@example.com"
+          />
+          <br />
+          <label htmlFor="password">User Password</label>
+          <br />
+          <input type="password" name="password" id="password" />
+          <br />
+          <Button
+            variant="contained"
+            sx={{ mt: 5 }}
+            type="submit"
+            name="intent"
+            value="signup"
+          >
+            Signup
+          </Button>
+        </Form>
       </Container>
     </>
   );
@@ -38,20 +60,30 @@ const Login = () => {
         <Typography variant="h3" gutterBottom>
           Login
         </Typography>
-        <Box
-          component="form"
-          sx={{
-            "& > :not(style)": { m: 1, width: "25ch" },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <TextField id="outlined-basic" label="Name" variant="outlined" />
-          <TextField id="outlined-basic" label="Password" variant="outlined" />
-        </Box>
-        <Button variant="contained" sx={{ mt: 3 }}>
-          Login
-        </Button>
+        <Form method="POST">
+          <label htmlFor="email">User Email</label>
+          <br />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="@example.com"
+          />
+          <br />
+          <label htmlFor="password">User Password</label>
+          <br />
+          <input type="password" name="password" id="password" />
+          <br />
+          <Button
+            variant="contained"
+            sx={{ mt: 3 }}
+            type="submit"
+            name="intent"
+            value="login"
+          >
+            Login
+          </Button>
+        </Form>
       </Container>
     </>
   );
@@ -59,6 +91,9 @@ const Login = () => {
 
 const SignupLoginPage = () => {
   const [loginState, setLoginState] = useState(false);
+  const navigate = useNavigate();
+  const actionData = useActionData();
+  const dispatch = useDispatch();
   const stateText = loginState
     ? "Already signed in ? Login then  "
     : "Sign up now ";
@@ -66,6 +101,16 @@ const SignupLoginPage = () => {
   const stateToggle = () => {
     setLoginState(!loginState);
   };
+
+  useEffect(() => {
+    console.log(actionData);
+    if (actionData) {
+      if (actionData.status === "success") {
+        dispatch(actions.set_token_to_localStorage(actionData));
+        navigate("/");
+      }
+    }
+  });
   return (
     <>
       {loginState ? <Signup /> : <Login />}
