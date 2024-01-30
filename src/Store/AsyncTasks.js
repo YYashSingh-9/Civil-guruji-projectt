@@ -5,13 +5,13 @@ export const dataSendRequest = async (
   data_to_send,
   cookie
 ) => {
-  let url = `http://127.0.0.1:3000/api/v1/${type}`;
+  let url = `https://civilgurujii.onrender.com/api/v1/${type}`;
   //   let url = `https://ehbackend.onrender.com/api/v3/${type}`;
-  additional ? (url += `/${additional}`) : "";
+  https: additional ? (url += `/${additional}`) : "";
   let sending_data = data_to_send ? JSON.stringify(data_to_send) : "";
   const doc = await fetch(url, {
-    credentials: "include",
-    withCredentials: true,
+    // credentials: "include",
+    // withCredentials: true,
     method: methodtype,
     headers: {
       Authorization: `Bearer ${cookie}`,
@@ -30,7 +30,7 @@ export const dataSendRequest = async (
 
 // FETCH TEMPLATE FUNCTION _____
 export const fetchFunction = async (type, cookie, additional) => {
-  let url = `http://127.0.0.1:3000/api/v1/${type}`;
+  let url = `https://civilgurujii.onrender.com/api/v1/${type}`;
   //   let url = `https://ehbackend.onrender.com/api/v3/${type}`;
 
   additional ? (url += `/${additional}`) : "";
@@ -41,8 +41,8 @@ export const fetchFunction = async (type, cookie, additional) => {
   }
   if (cookie) {
     const doc = await fetch(url, {
-      credentials: "include",
-      withCredentials: true,
+      // credentials: "include",
+      // withCredentials: true,
       method: "GET",
       headers: {
         Authorization: `Bearer ${cookie}`,
