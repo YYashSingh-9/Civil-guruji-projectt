@@ -86,3 +86,31 @@ export const login_Signup_Request = async ({ request }) => {
     return data;
   }
 };
+
+export const getAllCourses = async () => {
+  const doc = await fetchFunction("course", "", "");
+  console.log(doc);
+  return doc;
+};
+
+export const visitorPost = async ({ request }) => {
+  const doc = await request.formData();
+  console.log(doc);
+  const intent = doc.get("intent");
+  const str = intent.split(" N ");
+  console.log(str);
+  const body = {
+    userId: str[0],
+    courseId: str[1],
+  };
+  console.log(body);
+  const data = await dataSendRequest("cart", "buy", "POST", body, "");
+  console.log(data);
+  return data;
+};
+
+export const getAllCartItems = async () => {
+  const doc = await fetchFunction("cart", "", "");
+  console.log(doc);
+  return doc;
+};

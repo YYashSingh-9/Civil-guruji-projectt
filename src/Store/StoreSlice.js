@@ -4,6 +4,7 @@ const initialState_array = {
   currentUserObject: {},
   currentUserId: "",
   cookieTokenVal: "",
+  courseArray: [],
 };
 
 const storeSlice = createSlice({
@@ -30,6 +31,11 @@ const storeSlice = createSlice({
         (state.EditEmailInput = state.currentUserObject.email),
           (state.EditNameInput = state.currentUserObject.name);
       }
+    },
+    getCourseArray(state, action) {
+      const arraygot = action.payload;
+      state.courseArray = arraygot;
+      console.log(state.courseArray);
     },
   },
 });

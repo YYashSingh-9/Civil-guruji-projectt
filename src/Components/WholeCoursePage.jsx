@@ -1,12 +1,33 @@
+import { useSelector } from "react-redux";
 import classes from "./WholeCoursePage.module.css";
 import { Container, Box, Typography, Button } from "@mui/material";
-
+import { useActionData, useNavigate, useParams } from "react-router-dom";
+import { Form } from "react-router-dom";
+import { useEffect } from "react";
 const WholeCoursePage = () => {
+  const courseArray = useSelector((state) => state.sliceOne.courseArray);
+  const user = useSelector((state) => state.sliceOne.currentUserObject);
+  const { id } = useParams();
+  const actionData = useActionData();
+  const Navigate = useNavigate();
+  const currentCourse = courseArray.find((el) => {
+    return el._id === id;
+  });
+  const intentVal = `${user._id} N ${id}`;
+
+  useEffect(() => {
+    if (actionData) {
+      console.log(actionData);
+      if (actionData.status === "success") {
+        Navigate("/");
+      }
+    }
+  }, [actionData]);
   return (
     <>
       <Container className={classes.containerMainn}>
         <Box sx={{ mt: 3 }}>
-          <Typography variant="h3"> Course Name</Typography>
+          <Typography variant="h3"> {currentCourse.name}</Typography>
           <Typography
             variant="h6"
             sx={{
@@ -16,21 +37,20 @@ const WholeCoursePage = () => {
               marginTop: 2,
             }}
           >
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ipsum is that it has a more-or-less normal
-            distribution of letters, as opposed to using 'Content here, content
-            here', making it look like readable English. Many desktop publishing
-            packages and web page editors now use Lorem Ipsum as their default
-            model text, and a search for 'lorem ipsum' will uncover many web
-            sites still in their infancy. Various versions have evolved over the
-            years, sometimes by accident, sometimes on purpose (injected humour
-            and the like).
+            {currentCourse.details}
           </Typography>
-          <Button variant="contained" sx={{ mt: 2 }}>
-            {" "}
-            Buy this course
-          </Button>
+          <Form method="POST">
+            <Button
+              variant="contained"
+              sx={{ mt: 2 }}
+              type="submit"
+              name="intent"
+              value={`${intentVal}`}
+            >
+              {" "}
+              add to cart
+            </Button>
+          </Form>
         </Box>
       </Container>
     </>

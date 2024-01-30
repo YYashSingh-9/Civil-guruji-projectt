@@ -22,6 +22,8 @@ const UserSchema = new mongoose.Schema({
     required: [true, "Password is a must"],
     select: false,
   },
+  loginDate: Date,
+  msDate: Number,
 });
 
 const User = mongoose.model("User", UserSchema);

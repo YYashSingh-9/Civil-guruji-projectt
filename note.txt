@@ -1,14 +1,10 @@
 Dividing this project into parts (cases)
 
-Part 1 :- user creates account , view all courses , has an option to click order course with
-buy btn. ✔
+Part 1 :- user creates account , view all courses , has an option to add to cart course with
+a btn. ✔
 Part 2 :- user data saved in local storage and backend ✔
-part 3 :- user logs in -> data is fetched from local storage and checks the duration of
-previous login to the current login , if it is more than few seconds(5 day as per project)
-then send email to the user and pop a notification about this.
-part 4 :- when a user clicks a course we take that user's information and send it to the backend
-if user does not buy that course and return to homepage function will run and see if the user who clicked
-that course is in the list of people who bought courses ..if not then notification will pop and email will be sent
+Part 3 :- Sending email to added user who added a course to cart ✔
+
 
 
 front end part
@@ -24,3 +20,4 @@ backend part
 3. Create database model for people who clicked courses (course id & user id ) ✔
 4. Create courses model ✔ 
 5. Create bought course model ✔
+6. Create cart model.

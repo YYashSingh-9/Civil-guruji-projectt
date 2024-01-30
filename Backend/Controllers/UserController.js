@@ -52,3 +52,12 @@ exports.loginUser = CatchAsync(async (req, res, next) => {
   }
   createAndSendCookie(user, 200, res);
 });
+
+// Additional Middlewares
+exports.addCurrentTime = (req, res, next) => {
+  let ts = Date.now();
+  let date_ob = new Date(ts);
+  req.body.loginDate = date_ob;
+  req.body.msDate = ts;
+  next();
+};

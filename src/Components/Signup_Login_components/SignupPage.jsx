@@ -110,7 +110,7 @@ const SignupLoginPage = () => {
         navigate("/");
       }
     }
-  });
+  }, [actionData]);
   return (
     <>
       {loginState ? <Signup /> : <Login />}
